@@ -1,9 +1,12 @@
 console.log("Hello world")
 const express = require('express')
+const colors = require('colors')
 const dotenv = require('dotenv').config()
+const connectDB = require('./config/db')
 const {errorHandler} = require('./middleware/errorMiddleware')
 const port = process.env.PORT || 5000
 
+connectDB()
 const app = express()
 app.get('/api/goals',(req,res)=>{
     res.status(200).json({data :'Get Goals'})
